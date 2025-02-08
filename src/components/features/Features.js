@@ -14,40 +14,35 @@ const Features = () => {
       <Title title="Features" des="What I Do" />
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 xl:gap-20">
         <Card
-          title="Business Stratagy"
-          des="Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque soluta
-          hic consequuntur eum repellendus ad."
-         
-        />
-        <Card
-          title="App Development"
-          des="Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque soluta
-          hic consequuntur eum repellendus ad."
-          icon={<AiFillAppstore />}
-        />
-        <Card
-          title="SEO Optimisation"
-          des="Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque soluta
-          hic consequuntur eum repellendus ad."
-          icon={<SiProgress />}
-        />
-        <Card
-          title="Mobile Development"
-          des="Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque soluta
-          hic consequuntur eum repellendus ad."
-          icon={<FaMobile />}
-        />
-        <Card
-          title="UX Design"
-          des="Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque soluta
-          hic consequuntur eum repellendus ad."
-          icon={<SiAntdesign />}
-        />
-        <Card
-          title="Hosting Websites"
-          des="Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque soluta
-          hic consequuntur eum repellendus ad."
+          title="Web Development"
+          des=" I design, develop, and maintain responsive, user-friendly websites, ensuring optimal performance, security, and SEO for better visibility and engagement."
           icon={<FaGlobe />}
+        />
+        <Card
+          title="Mobile App Development"
+          des="I design, develop, and maintain mobile applications."
+          icon={<FaMobile />}
+          
+        />
+        <Card
+          title="Cloud & DevOps Solutions "
+          des=" I implement cloud and DevOps solutions, automating deployments, managing cloud infrastructure, and improving system reliability."
+          // icon={<SiProgress />}
+        />
+        <Card
+          title="Software Development & System Integration"
+          des="I design, develop, and integrate scalable software solutions, ensuring seamless interactions between different systems."
+          // icon={<AiFillAppstore />}
+        />
+        <Card
+          title="API Development & Integration"
+          des=" I build and integrate APIs, enabling secure and efficient communication between applications and third-party services."
+          // icon={<SiAntdesign />}
+        />
+        <Card
+          title=" Database Management & Optimization "
+          des=" I develop, optimize, and manage databases, ensuring high performance, security, and scalability for applications."
+          // icon={<FaGlobe />}
         />
       </div>
     </section>
