@@ -80,7 +80,7 @@ const LeftBanner = () => {
             </a>
           </div>
         </div>
-        <div>
+        {/* <div>
           <h2 className="text-base uppercase font-titleFont mb-4">
             BEST SKILL ON
           </h2>
@@ -98,7 +98,7 @@ const LeftBanner = () => {
               <SiFigma />
             </span>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
