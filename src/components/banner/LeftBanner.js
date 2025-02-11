@@ -16,7 +16,7 @@ import { SiTailwindcss, SiFigma, SiNextdotjs } from "react-icons/si";
 const LeftBanner = () => {
   const [text] = useTypewriter({
     words: [
-      "A Professional Full-Stack Software Developer.",
+      "A Full-Stack Software Developer.",
       "A Systems Integrator.",
       "An API Integration Expert.",
       "A UI/UX Designer.",
@@ -40,9 +40,9 @@ const LeftBanner = () => {
   return (
     <div className="w-full lgl:w-1/2 flex flex-col gap-20">
       <div className="flex flex-col gap-5">
-        <h4 className=" text-lg font-normal">WELCOME TO MY WORLD</h4>
+        <h4 className=" text-lg font-normal">WELCOME TO MY PROFESSIONAL JOURNEY</h4>
         <h1 className="text-6xl font-bold text-white">
-          Hi, I'm <span className="text-designColor capitalize">Right Muwethu Mazolo</span>
+          I'm Right Mazolo<span className="text-designColor capitalize"></span>
         </h1>
         <h2 className="text-4xl font-bold text-white">
           <span>{text}</span>
@@ -133,7 +133,7 @@ const LeftBanner = () => {
         </div>
         <div>
           <h2 className="text-base uppercase font-titleFont mb-4">
-            BEST SKILL ON
+          Proficient In
           </h2>
           <div className="flex gap-4">
             <span className="bannerIcon">
