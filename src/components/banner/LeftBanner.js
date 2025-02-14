@@ -57,36 +57,12 @@ const LeftBanner = () => {
         </p>
       </div>
       <div className="flex flex-col xl:flex-row gap-6 lgl:gap-0 justify-between">
+        
         <div>
-          {/* <h2 className="text-base uppercase font-titleFont mb-4">
-            Find me in
+          <h2 className="text-base uppercase font-titleFont mb-4">
+          Proficient In
           </h2>
           <div className="flex gap-4">
-            <a href="https://github.com/noorjsdivs/portfolioone" target="blank">
-              <span className="bannerIcon">
-                <FaGithub />
-              </span>
-            </a>
-            <a href="https://www.facebook.com/right.mazolo" target="blank">
-              <span className="bannerIcon">
-                <FaFacebookF />
-              </span>
-            </a>
-            {/* <a href="https://github.com/" target="blank">
-              <span className="bannerIcon1">
-                <FaTwitter />
-              </span>
-            </a> */}
-            {/* <a href="https://www.linkedin.com/in/right-mazolo-81bb11206" target="blank">
-              <span className="bannerIcon">
-                <FaLinkedinIn />
-              </span>
-            </a> 
-          </div> */}
-          <h2 className="text-base uppercase font-titleFont mb-4" style={{ color: "black" }}>
-            .
-          </h2>
-           <div className="flex gap-4">
             <span className="bannerIcon">
               <FaReact />
             </span>
@@ -121,20 +97,9 @@ const LeftBanner = () => {
             </span>
             <span className="bannerIcon">
               <FaNodeJs/>
-            </span>
-           
+            </span>          
            
           </div>
-
-        
-
-
-
-        </div>
-        <div>
-          <h2 className="text-base uppercase font-titleFont mb-4">
-          Proficient In
-          </h2>
           <div className="flex gap-4">
             <span className="bannerIcon">
               <FaFigma/>

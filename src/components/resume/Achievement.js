@@ -22,18 +22,12 @@ const Achievement = () => {
             des="Played a key role in developing and integrating APIs to connect banking systems with external services, enhancing efficiency and automation."
           />
           <ResumeCard
-            title="✅ Developed a Mobile App for TNM Agents"
+            title="✅ Developed a Mobile App for Mobile Money Agents"
             subTitle="Priority-based modlile money agents management system"
             result="Success"
             des="Designed and implemented a mobile money agent management app that transitioned from a queue-based to a priority-based system, improving transaction efficiency."
           />
-          <ResumeCard
-            title="✅ Led the Migration of Over 18 Billers on VasPortal"
-            subTitle="NBS Bank Core Banking System Project"
-            result="Success"
-            des="Collaborated in transitioning billers from T24 to Flexcube, ensuring a seamless and timely migration process."
-          />
-        </div>
+            </div>
       </div>
       <div>
         <div className="py-6 lgl:py-12 font-titleFont flex flex-col gap-4">
@@ -46,13 +40,7 @@ const Achievement = () => {
             result="Success"
             des="Built internal platforms enabling bank users to interact with financial services, automate reports, and enhance data analytics for decision-making."
           />
-          <ResumeCard
-            title="✅ Optimized Payment Systems & Online Transactions"
-            subTitle="NBS BANK"
-            result="Success"
-            des="Integrated and maintained online payment gateways and electronic funds transfer (EFT) systems, ensuring secure and seamless transactions."
-          />
-          <ResumeCard
+                    <ResumeCard
             title="✅ Completed Certifications in DevOps, Agile, and Advanced React"
             subTitle="NBS BANK"
             result="Success"
