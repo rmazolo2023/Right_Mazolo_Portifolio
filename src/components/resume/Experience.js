@@ -26,13 +26,13 @@ const Experience = () => {
             title="IT Technician and Web Developer"
             subTitle="Finaltouch IT & Electronics- (2022 - 2023)"
             result="Malawi-Blantyre"
-            des="As an IT Technician and Software Developer at Finaltouch IT & Electronics, I developed a dynamic and interactive website to improve user engagement and designed the School Management App mobile application to streamline school operations. My responsibilities also included installing and configuring software applications, as well as providing hardware support by fixing and maintaining computer systems and components to ensure optimal performance."
+            des="As an IT Technician and Software Developer at Finaltouch IT & Electronics, I designed and developed a dynamic and interactive website to improve user engagement."
           />
           <ResumeCard
             title="Freelance Web and Mobile App Developer"
             subTitle="Telekom Networks Malawi - (2021 - 2022)"
             result="Malawi-Blantyre"
-            des="I developed a mobile application for TNM to manage mobile money agents, utilizing a priority-based assistant system and eliminating the traditional queue-based approach, which had posed numerous challenges. This solution enhanced the efficiency of agent management by prioritizing tasks and improving overall user experience"
+            des="I developed a mobile application to manage mobile money agents, utilizing a priority-based assistant system and eliminating the traditional queue-based approach, which had posed numerous challenges. This solution enhanced the efficiency of agent management by prioritizing tasks and improving overall user experience"
           />
         </div>
       </div>

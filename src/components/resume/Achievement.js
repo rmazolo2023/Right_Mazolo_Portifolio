@@ -16,12 +16,6 @@ const Achievement = () => {
         </div>
         <div className="mt-6 lgl:mt-14 w-full h-[1000px] border-l-[6px] border-l-black border-opacity-30 flex flex-col gap-10">
           <ResumeCard
-            title="✅ Successfully Integrated Third-Party Services with Core Banking Systems"
-            subTitle="Oracle-NBS Bank project"
-            result="Success"
-            des="Played a key role in developing and integrating APIs to connect banking systems with external services, enhancing efficiency and automation."
-          />
-          <ResumeCard
             title="✅ Developed a Mobile App for Mobile Money Agents"
             subTitle="Priority-based modlile money agents management system"
             result="Success"
@@ -36,13 +30,13 @@ const Achievement = () => {
         <div className="mt-6 lgl:mt-14 w-full h-[1000px] border-l-[6px] border-l-black border-opacity-30 flex flex-col gap-10">
           <ResumeCard
             title="✅ Designed and Developed Custom Banking Solutions "
-            subTitle="NBS BANK"
+            subTitle="BANK"
             result="Success"
-            des="Built internal platforms enabling bank users to interact with financial services, automate reports, and enhance data analytics for decision-making."
+            des="Built platforms enabling bank users to interact with financial services, automate reports, and enhance data analytics for decision-making."
           />
                     <ResumeCard
             title="✅ Completed Certifications in DevOps, Agile, and Advanced React"
-            subTitle="NBS BANK"
+            subTitle="Udemy"
             result="Success"
             des="Successfully passed Udemy assessments in DevOps CI/CD with AWS, Docker, Jenkins, Agile Project Management, and Advanced React, strengthening expertise in modern software development methodologies."
           />
