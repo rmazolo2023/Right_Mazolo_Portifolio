@@ -16,13 +16,24 @@ const Achievement = () => {
         </div>
         <div className="mt-6 lgl:mt-14 w-full h-[1000px] border-l-[6px] border-l-black border-opacity-30 flex flex-col gap-10">
           <ResumeCard
-            title="✅ Developed a Mobile App for Mobile Money Agents"
+            title="✅ Developed Mobile App for Mobile Money Agents"
             subTitle="Priority-based modlile money agents management system"
             result="Success"
             des="Designed and implemented a mobile money agent management app that transitioned from a queue-based to a priority-based system, improving transaction efficiency."
           />
+          
+          <ResumeCard
+            title="✅ Developed and maintained dynamic websites"
+            subTitle="Dynamic Websites"
+            result="Success"
+            des="Developed and maintained dynamic websites for several high-profile companies, ensuring robust performance, security, and user experience."
+          />
             </div>
+
+
+
       </div>
+      
       <div>
         <div className="py-6 lgl:py-12 font-titleFont flex flex-col gap-4">
           <p className="text-sm text-designColor tracking-[4px]">2015 - 2025</p>
