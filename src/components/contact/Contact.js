@@ -1,6 +1,9 @@
-import React,{useState} from 'react'
-import Title from '../layouts/Title';
-import ContactLeft from './ContactLeft';
+import React, { useState } from "react"; 
+import emailjs from "@emailjs/browser";
+import { motion } from "framer-motion";
+import { FaUser, FaPhone, FaEnvelope, FaPaperPlane, FaCommentDots, FaSpinner } from "react-icons/fa";
+import Title from "../layouts/Title";
+import ContactLeft from "./ContactLeft";
 
 const Contact = () => {
   const [username, setUsername] = useState("");
@@ -10,160 +13,152 @@ const Contact = () => {
   const [message, setMessage] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  // ========== Email Validation start here ==============
   const emailValidation = () => {
-    return String(email)
-      .toLocaleLowerCase()
-      .match(/^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/);
+    return String(email).toLowerCase().match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
   };
-  // ========== Email Validation end here ================
 
   const handleSend = (e) => {
     e.preventDefault();
-    if (username === "") {
-      setErrMsg("Username is required!");
-    } else if (phoneNumber === "") {
-      setErrMsg("Phone number is required!");
-    } else if (email === "") {
-      setErrMsg("Please give your Email!");
-    } else if (!emailValidation(email)) {
-      setErrMsg("Give a valid Email!");
-    } else if (subject === "") {
-      setErrMsg("Plese give your Subject!");
-    } else if (message === "") {
-      setErrMsg("Message is required!");
-    } else {
-      setSuccessMsg(
-        `Thank you dear ${username}, Your Messages has been sent Successfully!`
-      );
-      setErrMsg("");
-      setUsername("");
-      setPhoneNumber("");
-      setEmail("");
-      setSubject("");
-      setMessage("");
-    }
+    
+    if (!username) return setErrMsg("Username is required!");
+    if (!phoneNumber) return setErrMsg("Phone number is required!");
+    if (!email) return setErrMsg("Please enter your Email!");
+    if (!emailValidation(email)) return setErrMsg("Enter a valid Email!");
+    if (!subject) return setErrMsg("Please enter a Subject!");
+    if (!message) return setErrMsg("Message is required!");
+    
+    setErrMsg("");
+    setLoading(true);
+
+    const templateParams = {
+      to_name: "Right Mazolo",
+      from_name: email,
+      message: message,
+    };
+
+    emailjs.send("service_5pvxcew", "template_1xadppl", templateParams, "ENVN4Vn7F9EAdtm0r")
+      .then(() => {
+        setSuccessMsg("Thank you! Your message has been sent successfully.");
+        setUsername("");
+        setPhoneNumber("");
+        setEmail("");
+        setSubject("");
+        setMessage("");
+      })
+      .catch(() => {
+        setErrMsg("Failed to send message. Please try again.");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
+
+  const handleSuccessMsgClose = () => {
+    setSuccessMsg("");
+  };
+
   return (
-    <section
-      id="contact"
-      className="w-full py-20 border-b-[1px] border-b-black"
-    >
-      <div className="flex justify-center items-center text-center">
-        <Title title="" des="Contact with me" />
+    <section id="contact" className="w-full py-20 border-b border-gray-800">
+      <div className="flex justify-center items-center text-center mb-10">
+        <Title title="" des="Contact Me" />
       </div>
-      <div className="w-full">
-        <div className="w-full h-auto flex flex-col lgl:flex-row justify-between">
-          <ContactLeft />
-          <div className="w-full lgl:w-[60%] h-full py-10 bg-gradient-to-r from-[#1e2024] to-[#23272b] flex flex-col gap-8 p-4 lgl:p-8 rounded-lg shadow-shadowOne">
-            <form className="w-full flex flex-col gap-4 lgl:gap-6 py-2 lgl:py-5">
-              {errMsg && (
-                <p className="py-3 bg-gradient-to-r from-[#1e2024] to-[#23272b] shadow-shadowOne text-center text-orange-500 text-base tracking-wide animate-bounce">
-                  {errMsg}
-                </p>
-              )}
-              {successMsg && (
-                <p className="py-3 bg-gradient-to-r from-[#1e2024] to-[#23272b] shadow-shadowOne text-center text-green-500 text-base tracking-wide animate-bounce">
-                  {successMsg}
-                </p>
-              )}
-              <div className="w-full flex flex-col lgl:flex-row gap-10">
-                <div className="w-full lgl:w-1/2 flex flex-col gap-4">
-                  <p className="text-sm text-gray-400 uppercase tracking-wide">
-                    Your name
-                  </p>
-                  <input
-                    onChange={(e) => setUsername(e.target.value)}
-                    value={username}
-                    className={`${
-                      errMsg === "Username is required!" &&
-                      "outline-designColor"
-                    } contactInput`}
-                    type="text"
-                  />
-                </div>
-                <div className="w-full lgl:w-1/2 flex flex-col gap-4">
-                  <p className="text-sm text-gray-400 uppercase tracking-wide">
-                    Phone Number
-                  </p>
-                  <input
-                    onChange={(e) => setPhoneNumber(e.target.value)}
-                    value={phoneNumber}
-                    className={`${
-                      errMsg === "Phone number is required!" &&
-                      "outline-designColor"
-                    } contactInput`}
-                    type="text"
-                  />
-                </div>
-              </div>
-              <div className="flex flex-col gap-4">
-                <p className="text-sm text-gray-400 uppercase tracking-wide">
-                  Email
-                </p>
-                <input
-                  onChange={(e) => setEmail(e.target.value)}
-                  value={email}
-                  className={`${
-                    errMsg === "Please give your Email!" &&
-                    "outline-designColor"
-                  } contactInput`}
-                  type="email"
-                />
-              </div>
-              <div className="flex flex-col gap-4">
-                <p className="text-sm text-gray-400 uppercase tracking-wide">
-                  Subject
-                </p>
-                <input
-                  onChange={(e) => setSubject(e.target.value)}
-                  value={subject}
-                  className={`${
-                    errMsg === "Plese give your Subject!" &&
-                    "outline-designColor"
-                  } contactInput`}
-                  type="text"
-                />
-              </div>
-              <div className="flex flex-col gap-4">
-                <p className="text-sm text-gray-400 uppercase tracking-wide">
-                  Message
-                </p>
-                <textarea
-                  onChange={(e) => setMessage(e.target.value)}
-                  value={message}
-                  className={`${
-                    errMsg === "Message is required!" && "outline-designColor"
-                  } contactTextArea`}
-                  cols="30"
-                  rows="8"
-                ></textarea>
-              </div>
-              <div className="w-full">
+      <div className="w-full flex flex-col lg:flex-row justify-between items-center">
+        <ContactLeft />
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 0.8 }}
+          className="w-full lg:w-3/5 bg-gray-900 p-6 lg:p-10 rounded-lg shadow-lg text-white"
+        >
+          <form className="w-full flex flex-col gap-6">
+         
+        
+
+            {errMsg && <p className="text-orange-500">{errMsg}</p>}
+            {successMsg && (
+              <div className="flex justify-between items-center text-green-500">
+                <p>{successMsg}</p>
                 <button
-                  onClick={handleSend}
-                  className="w-full h-12 bg-[#141518] rounded-lg text-base text-gray-400 tracking-wider uppercase hover:text-white duration-300 hover:border-[1px] hover:border-designColor border-transparent"
+                  onClick={handleSuccessMsgClose}
+                  className="bg-transparent text-green-500 border border-green-500 py-1 px-3 rounded"
                 >
-                  Send Message
+                  OK
                 </button>
               </div>
-              {errMsg && (
-                <p className="py-3 bg-gradient-to-r from-[#1e2024] to-[#23272b] shadow-shadowOne text-center text-orange-500 text-base tracking-wide animate-bounce">
-                  {errMsg}
-                </p>
-              )}
-              {successMsg && (
-                <p className="py-3 bg-gradient-to-r from-[#1e2024] to-[#23272b] shadow-shadowOne text-center text-green-500 text-base tracking-wide animate-bounce">
-                  {successMsg}
-                </p>
-              )}
-            </form>
-          </div>
-        </div>
+            )}
+
+            <div className="relative">
+              <FaUser className="absolute left-4 top-3 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Your Name"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className="w-full pl-10 p-3 bg-gray-800 rounded-lg focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            <div className="relative">
+              <FaPhone className="absolute left-4 top-3 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Phone Number"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+                className="w-full pl-10 p-3 bg-gray-800 rounded-lg focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            <div className="relative">
+              <FaEnvelope className="absolute left-4 top-3 text-gray-400" />
+              <input
+                type="email"
+                placeholder="Your Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full pl-10 p-3 bg-gray-800 rounded-lg focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            <div className="relative">
+              <FaCommentDots className="absolute left-4 top-3 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Subject"
+                value={subject}
+                onChange={(e) => setSubject(e.target.value)}
+                className="w-full pl-10 p-3 bg-gray-800 rounded-lg focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            <div className="relative">
+              <textarea
+                placeholder="Your Message"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                className="w-full p-3 bg-gray-800 rounded-lg focus:ring-2 focus:ring-blue-500"
+                rows="5"
+              />
+            </div>
+
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={handleSend}
+              className="w-full bg-blue-500 text-white p-3 rounded-lg flex items-center justify-center gap-2"
+              disabled={loading}
+            >
+              {loading ? <FaSpinner className="animate-spin" /> : <FaPaperPlane />} 
+              {loading ? "Sending..." : "Send Message"}
+            </motion.button>
+          </form>
+        </motion.div>
       </div>
     </section>
   );
-}
+};
 
-export default Contact
+export default Contact;

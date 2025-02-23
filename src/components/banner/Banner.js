@@ -1,16 +1,38 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import LeftBanner from './LeftBanner';
 import RightBanner from './RightBanner';
 
 const Banner = () => {
+  // State to store mouse position
+  const [mousePosition, setMousePosition] = useState({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
+
+  // Function to update mouse position
+  const handleMouseMove = (e) => {
+    const { clientX, clientY } = e;
+    setMousePosition({ x: clientX, y: clientY });
+  };
+
+  // Attach the mousemove event to the document
+  useEffect(() => {
+    // Initially set the mouse position to the center of the screen
+    setMousePosition({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
+
+    document.addEventListener('mousemove', handleMouseMove);
+
+    // Clean up the event listener
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
   // Inline style for the small white spots
   const whiteSpotStyle = {
     position: 'absolute',
-    width: '1px',  // smaller size
-    height: '1px', // smaller size
+    width: '2px',  // smaller size
+    height: '2px', // smaller size
     borderRadius: '50%',
     backgroundColor: 'white',
-    animation: 'move 10s infinite ease-in-out',
+    pointerEvents: 'none',
   };
 
   // Generate random spots function
@@ -19,6 +41,9 @@ const Banner = () => {
     for (let i = 0; i < 300; i++) {
       const top = Math.random() * 100 + '%';
       const left = Math.random() * 100 + '%';
+      const offsetX = Math.random() * 20 - 10;  // Randomize horizontal movement
+      const offsetY = Math.random() * 20 - 10;  // Randomize vertical movement
+
       spots.push(
         <div
           key={i}
@@ -26,8 +51,8 @@ const Banner = () => {
             ...whiteSpotStyle,
             top,
             left,
-            animationDuration: `${Math.random() * 5 + 5}s`,  // Randomize animation duration
-            animationDelay: `${Math.random() * 5}s`, // Randomize animation delay
+            transform: `translate(${mousePosition.x + offsetX - window.innerWidth / 2}px, ${mousePosition.y + offsetY - window.innerHeight / 2}px)`,
+            transition: 'transform 0.3s ease-out',  // Smooth transition to the new position
           }}
         />
       );
@@ -35,20 +60,10 @@ const Banner = () => {
     return spots;
   };
 
-  // Inline keyframes for animation (random movement)
-  const keyframesStyle = {
-    '@keyframes move': {
-      '0%': { transform: 'translate(0, 0)' },
-      '50%': { transform: 'translate(10px, 10px)' },
-      '100%': { transform: 'translate(0, 0)' },
-    },
-  };
-
   return (
     <section
       id="home"
       className="w-full pt-10 pb-20 flex flex-col gap-10 xl:gap-0 lgl:flex-row items-center border-b-[1px] font-titleFont border-b-black relative"
-      style={keyframesStyle} // Inline keyframes
     >
       <LeftBanner />
       <RightBanner />
@@ -59,6 +74,6 @@ const Banner = () => {
       </div>
     </section>
   );
-}
+};
 
 export default Banner;
