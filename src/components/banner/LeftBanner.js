@@ -47,7 +47,7 @@ const LeftBanner = () => {
         // Clear interval when all icons have been displayed
         clearInterval(intervalId);
       }
-    }, 80); // Display an icon every 500ms
+    }, 45); // Display an icon every 500ms
 
     // Clean up interval when the component is unmounted
     return () => clearInterval(intervalId);
