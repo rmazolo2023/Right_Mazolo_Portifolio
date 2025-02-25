@@ -7,19 +7,20 @@ import { motion } from "framer-motion";
 const LeftBanner = () => {
   const [text] = useTypewriter({
     words: [
-      "A Full-Stack Software Developer.",
-      "A Systems Integrator.",
-      "An API Integration Expert.",
+      "A Full Stack Developer",
+      "A DevSecOps Engineer",
+      "A QA Tester",
       "A UI/UX Designer.",
       "An Agile Practitioner.",
-      "A DevSecOps Engineer.",
-      "A Cloud Computing Specialist.",
+      "A Cloud Engineer",
+      "A Git Guru",
       "A Database Developer.",
       "A Solution Architect.",
-      "A CI/CD Automation Expert.",
-      "A Performance Optimizer.",
-      "An Assertive Communicator.",
-      "An Analytical Thinker."
+      "A Polyglot Programmer ",
+      "A Lifelong Learner",
+      "A Team Player",
+      "An Analytical Thinker",
+      "An Effective Communicator"
     ],
     loop: true,
     typeSpeed: 20,
@@ -63,7 +64,7 @@ const LeftBanner = () => {
     <div className="w-full lgl:w-1/2 flex flex-col gap-20">
       <div className="flex flex-col gap-5">
         <div className="flex gap-4 justify-center">
-       
+       ss
           <motion.a 
             href="https://www.facebook.com/right.mazolo/"
             target="_blank"
