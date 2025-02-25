@@ -64,7 +64,7 @@ const LeftBanner = () => {
     <div className="w-full lgl:w-1/2 flex flex-col gap-20">
       <div className="flex flex-col gap-5">
         <div className="flex gap-4 justify-center">
-       ss
+      
           <motion.a 
             href="https://www.facebook.com/right.mazolo/"
             target="_blank"
