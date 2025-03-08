@@ -1,26 +1,24 @@
-import React, { useEffect, useState, useRef } from "react";
-import { FaDatabase,FaLinkedinIn,FaFacebookF,FaWhatsapp, FaJava, FaGoogle, FaNodeJs, FaServer, FaFigma, FaDocker, FaCloud, FaGitAlt, FaGithub, FaHtml5, FaCss3Alt, FaJs, FaReact, FaLinkedin, FaTwitter, FaFacebook } from "react-icons/fa";
-import { SiTailwindcss, SiTableau, SiCsharp, SiFigma, SiNextdotjs, SiElasticsearch, SiLogstash, SiDotnet, SiJetbrains, SiPhp, SiPython, SiPostgresql, SiMongodb, SiMysql, SiSpring, SiExpress, SiKubernetes, SiJenkins, SiTerraform, SiAws, SiAzuredevops, SiNginx, SiAnsible, SiVisualstudiocode, SiPostman, SiTrello, SiJira } from "react-icons/si";
+import React, { useEffect, useState, useRef, useMemo } from "react";
+import { 
+  FaDatabase, FaLinkedinIn, FaFacebookF, FaWhatsapp, FaJava, FaNodeJs, FaServer, FaFigma, 
+  FaDocker, FaCloud, FaGithub, FaHtml5, FaCss3Alt, FaJs, FaReact, FaTwitter 
+} from "react-icons/fa";
+import { 
+  SiTailwindcss, SiTableau, SiCsharp, SiElasticsearch, SiLogstash, SiDotnet, SiJetbrains, SiPhp, 
+  SiPython, SiPostgresql, SiMysql, SiExpress, SiKubernetes, SiJenkins, SiAzuredevops, SiNginx, 
+  SiAnsible, SiVisualstudiocode, SiPostman 
+} from "react-icons/si";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
 import { motion } from "framer-motion";
 
 const LeftBanner = () => {
   const [text] = useTypewriter({
     words: [
-      "A Full Stack Developer",
-      "A DevSecOps Engineer",
-      "A QA Tester",
-      "A UI/UX Designer",
-      "An Agile Practitioner",
-      "A Cloud Engineer",
-      "A Git Guru",
-      "A Database Developer",
-      "A Solution Architect",
-      "A Polyglot Programmer ",
-      "A Lifelong Learner",
-      "A Team Player",
-      "An Analytical Thinker",
-      "An Effective Communicator"
+      "A Full Stack Developer", "A DevSecOps Engineer", "A QA Tester",
+      "A UI/UX Designer", "An Agile Practitioner", "A Cloud Engineer",
+      "A Git Guru", "A Database Developer", "A Solution Architect",
+      "A Polyglot Programmer", "A Lifelong Learner", "A Team Player",
+      "An Analytical Thinker", "An Effective Communicator"
     ],
     loop: true,
     typeSpeed: 20,
@@ -28,43 +26,46 @@ const LeftBanner = () => {
     delaySpeed: 2000,
   });
 
-  // Icon list
-  const icons = [
-    <FaJava />, <SiTableau />, <SiAzuredevops />, <SiJenkins />, <SiElasticsearch />, <SiLogstash />, <FaNodeJs />, <SiCsharp />, <FaFigma />, <SiJetbrains />, <FaServer />, <SiDotnet />, <SiTailwindcss />, <FaDocker />, <SiKubernetes />, <FaHtml5 />, <FaJs />, <FaDatabase />, <SiMysql />, <SiNginx />, <FaReact />, <SiAnsible />, <SiVisualstudiocode />, <FaGithub />, <SiPostman />, <SiPython />, <SiPhp />, <SiPostgresql />, <FaCloud />, <SiFigma />, <FaCss3Alt />, <SiExpress />
-  ];
+  // Use useMemo to prevent re-creation of icons array on each render
+  const icons = useMemo(() => [
+    { icon: <FaJava />, name: "Java" }, { icon: <SiTableau />, name: "Tableau" },
+    { icon: <SiAzuredevops />, name: "Azure DevOps" }, { icon: <SiJenkins />, name: "Jenkins" },
+    { icon: <SiElasticsearch />, name: "Elasticsearch" }, { icon: <SiLogstash />, name: "Logstash" },
+    { icon: <FaNodeJs />, name: "Node.js" }, { icon: <SiCsharp />, name: "C#" },
+    { icon: <FaFigma />, name: "Figma" }, { icon: <SiJetbrains />, name: "JetBrains" },
+    { icon: <FaServer />, name: "Server" }, { icon: <SiDotnet />, name: ".NET" },
+    { icon: <SiTailwindcss />, name: "Tailwind CSS" }, { icon: <FaDocker />, name: "Docker" },
+    { icon: <SiKubernetes />, name: "Kubernetes" }, { icon: <FaHtml5 />, name: "HTML5" },
+    { icon: <FaJs />, name: "JavaScript" }, { icon: <FaDatabase />, name: "Database" },
+    { icon: <SiMysql />, name: "MySQL" }, { icon: <SiNginx />, name: "Nginx" },
+    { icon: <FaReact />, name: "React.js" }, { icon: <SiAnsible />, name: "Ansible" },
+    { icon: <SiVisualstudiocode />, name: "VS Code" }, { icon: <FaGithub />, name: "GitHub" },
+    { icon: <SiPostman />, name: "Postman" }, { icon: <SiPython />, name: "Python" },
+    { icon: <SiPhp />, name: "PHP" }, { icon: <SiPostgresql />, name: "PostgreSQL" },
+    { icon: <FaCloud />, name: "Cloud" }, { icon: <FaCss3Alt />, name: "CSS3" },
+    { icon: <SiExpress />, name: "Express.js" }
+  ], []);
 
-  // State to hold the icons being displayed
   const [displayedIcons, setDisplayedIcons] = useState([]);
-  const currentIndexRef = useRef(0); // Ref to store the current index
+  const currentIndexRef = useRef(0);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       if (currentIndexRef.current < icons.length) {
-        // Update the state with the next icon
-        setDisplayedIcons(prevIcons => [...prevIcons, icons[currentIndexRef.current]]);
+        setDisplayedIcons((prevIcons) => [...prevIcons, icons[currentIndexRef.current]]);
         currentIndexRef.current++;
       } else {
-        // Clear interval when all icons have been displayed
         clearInterval(intervalId);
       }
-    }, 45); // Display an icon every 500ms
+    }, 45);
 
-    // Clean up interval when the component is unmounted
     return () => clearInterval(intervalId);
-  }, []); // Empty dependency array ensures it runs once
+  }, [icons]); // Now 'icons' is stable and doesn't trigger re-renders
 
   return (
-
-    
-
-
-
-
-
     <div className="w-full lgl:w-1/2 flex flex-col gap-20">
       <div className="flex flex-col gap-5">
         <div className="flex gap-4 justify-center">
-      
           <motion.a 
             href="https://www.facebook.com/right.mazolo/"
             target="_blank"
@@ -96,28 +97,37 @@ const LeftBanner = () => {
             href="https://wa.me/265883252419"
             target="_blank"
             rel="noopener noreferrer"
-            className="bannerIcon text-blue-600 hover:text-blue-800" 
+            className="bannerIcon text-green-600 hover:text-green-800" 
             whileHover={{ scale: 1.2 }}
           >
-             <FaWhatsapp />
+            <FaWhatsapp />
           </motion.a>
         </div>
-         <h2 className="text-base uppercase font-titleFont mb-4 " style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>Hello, I'm Right Muwethu Mazolo</h2>
+
+        <h2 className="text-base uppercase font-titleFont mb-4 text-center">
+          Hello, I'm Right Muwethu Mazolo
+        </h2>
         <h2 className="text-4xl font-bold text-white">
           <span>{text}</span>
           <Cursor cursorBlinking="false" cursorStyle="|" cursorColor="#ff014f" />
         </h2>
-        <p className="text-base font-bodyFont leading-6 tracking-wide"></p>
       </div>
+
       <div className="flex flex-col xl:flex-row gap-6 lgl:gap-0 justify-between">
         <div>
-          <h2 className="text-base uppercase font-titleFont mb-4" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>Proficient In</h2>
-          {/* Render icons one by one */}
+          <h2 className="text-base uppercase font-titleFont mb-4 text-center">
+            Proficient In
+          </h2>
           <div className="flex flex-wrap gap-4">
-            {displayedIcons.map((icon, index) => (
-              <span key={index} className="bannerIcon">
-                {icon}
-              </span>
+            {displayedIcons.map((item, index) => (
+              item && item.icon ? (
+                <div key={index} className="relative group">
+                  <span className="bannerIcon">{item.icon}</span>
+                  <span className="absolute bottom-10 left-1/2 transform -translate-x-1/2 px-2 py-1 text-sm text-white bg-gray-800 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {item.name}
+                  </span>
+                </div>
+              ) : null
             ))}
           </div>
         </div>
